@@ -2,22 +2,22 @@
 
 // Complete this algo
 // THIS DOESN"T WORK LOL
-const binarySearch = (array, target, start, end) => {
-	if (start === undefined) {
-		start = 0;
-	}
-	if (start <= end) {
-		return false;
-	} else {
+const binarySearch = (array, target, start = 0, end = array.length - 1) => {
+	if (start > end) return false;
+
+	else {
 		let midpoint = Math.floor(start + end / 2);
-		if (array[midpoint] === target || array[start] === target || array[end] === target) {
-			return true;
+
+		if (array[start] === target || array[end] === target) return true;
+		else if (array[midpoint] === target) return true;
+
+		else if (target < array[midpoint]) {
+				return binarySearch(array, target, start + 1, midpoint - 1);
 		}
-		if (target < array[midpoint]) {
-			return binarySearch(array, target, start, midpoint - 1);
-		}
-		if (target > array[midpoint]) {
-			return binarySearch(array, target, midpoint + 1, end);
+		else if (target > array[midpoint]) {
+				return binarySearch(array, target, midpoint + 1, end + 1);
+		} else {
+			return false
 		}
 	}
 }
