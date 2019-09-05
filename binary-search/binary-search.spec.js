@@ -8,6 +8,15 @@ const test3 = [-0.5, 0.03, 2.6, 3, 3.5, 3.777777, 5];
 
 
 describe('Binary Search', () => {
+	it('returns false if array is empty', () => {
+		expect(binarySearch([], 14)).to.equal(false);
+	});
+
+	it('works for array with single item', () => {
+		expect(binarySearch([14], 14)).to.equal(true);
+		expect(binarySearch([14], 1)).to.equal(false);
+	});
+
 	it('returns true if target value is in array', () =>{
 		expect(binarySearch(test1, 10)).to.equal(true);
 		expect(binarySearch(test2, -3)).to.equal(true);
